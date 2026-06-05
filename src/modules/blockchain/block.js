@@ -36,7 +36,7 @@ export async function buildGenesisBlock({ authorPubKey, roomId, roomName, create
   return block;
 }
 
-export async function buildMessageBlock({ index, prevHash, authorPubKey, priv, message, roomKeyHex, timestamp }) {
+export async function buildMessageBlock({ index, prevHash, authorPubKey, privJwk, message, roomKeyHex, timestamp }) {
   const enc = await encryptString(message, roomKeyHex);
   const block = {
     index,
@@ -48,7 +48,7 @@ export async function buildMessageBlock({ index, prevHash, authorPubKey, priv, m
     signature: ''
   };
   block.hash = await computeHash(block);
-  block.signature = priv ? await signHash(block.hash, priv) : '';
+  block.signature = privJwk ? await signHash(block.hash, privJwk) : '';
   return block;
 }
 

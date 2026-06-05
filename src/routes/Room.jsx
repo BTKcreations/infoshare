@@ -87,7 +87,7 @@ export default function Room() {
       await sendMessage({
         roomId,
         message: text.trim(),
-        priv: user.priv,
+        privJwk: user.privJwk,
         pub: user.pub,
         roomKeyHex: room.roomKey
       });

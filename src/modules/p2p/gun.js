@@ -41,7 +41,13 @@ export function getGun() {
   if (typeof window !== 'undefined') {
     window.addEventListener('unhandledrejection', (e) => {
       const msg = String(e?.reason?.message || e?.reason || '');
-      if (msg.includes('HC(') || msg.includes('work') || msg.includes('SEA')) {
+      if (
+        msg.includes('HC(') ||
+        msg.includes('qC(') ||
+        msg.includes('work') ||
+        msg.includes('SEA') ||
+        msg.includes('proof')
+      ) {
         e.preventDefault();
         console.warn('[gun] suppressed async error:', msg);
       }

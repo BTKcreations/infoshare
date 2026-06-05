@@ -45,12 +45,12 @@ export default function Onboarding() {
     }
 
     setStatus('Generating keypair…');
-    const { pub, priv } = await generateKeypair();
+    const { pub, privJwk } = await generateKeypair();
 
     setStatus('Saving profile locally…');
     const { passphraseKeyHex } = await persistProfile({
       user: { ...form, username, pub },
-      priv,
+      privJwk,
       passphrase
     });
 
@@ -67,7 +67,7 @@ export default function Onboarding() {
       pub,
       createdAt: Date.now()
     };
-    rememberActiveUser({ user, priv, pub, passphraseKeyHex });
+    rememberActiveUser({ user, privJwk, pub, passphraseKeyHex });
 
     setBusy(false);
     setStatus('');

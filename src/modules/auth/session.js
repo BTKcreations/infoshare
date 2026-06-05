@@ -14,7 +14,7 @@ export function getSession() {
     fullName: u.fullName,
     pub: u.pub,
     pubKeyShort: u.pub?.slice(0, 8) + '…',
-    priv: u.priv,
+    privJwk: u.privJwk,
     passphraseKeyHex: u.passphraseKeyHex,
     phone: u.phone,
     email: u.email,

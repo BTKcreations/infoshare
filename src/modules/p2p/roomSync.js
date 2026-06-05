@@ -92,7 +92,7 @@ export async function loadRemoteChain(roomId) {
   });
 }
 
-export async function sendMessage({ roomId, message, priv, pub, roomKeyHex }) {
+export async function sendMessage({ roomId, message, privJwk, pub, roomKeyHex }) {
   const current = await getTip(roomId);
   const prevHash = current ? current.hash : '0'.repeat(64);
   const index = current ? current.index + 1 : 1;
@@ -100,7 +100,7 @@ export async function sendMessage({ roomId, message, priv, pub, roomKeyHex }) {
     index,
     prevHash,
     authorPubKey: pub,
-    priv,
+    privJwk,
     message,
     roomKeyHex
   });
